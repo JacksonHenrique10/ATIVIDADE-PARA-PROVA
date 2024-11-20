@@ -17,6 +17,6 @@ function carregarPagina(pagina) {
         document.body.appendChild(scriptNovo);
       });
   }
-  
+  console.log(response);
 
-localStorage.setItem("ipApi","http://10.0.3.10:3000/");
+localStorage.setItem("ipApi","http://10.0.3.148:3000/");
