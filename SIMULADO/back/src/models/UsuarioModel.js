@@ -21,6 +21,21 @@ class Usuario {
         }
 
     }
+
+
+    static async listarUsuarios() {
+        try {
+            const conn = await connection();
+            
+            const [rows] = await conn.query("SELECT id_usuario, nome FROM USUARIO");
+
+            return rows;
+
+        } catch (error) {
+            throw error;
+        } 
+
+    }
     
 }
 
