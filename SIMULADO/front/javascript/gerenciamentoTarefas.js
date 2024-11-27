@@ -24,7 +24,7 @@ $(document).ready(async function () {
             cards.forEach(card => card.remove());
         })
         try {
-            console.log("qwertyuiop")
+            // console.log("qwertyuiop")
             const response = await axios.get(`${localStorage.getItem('ipApi')}listarTarefas`)
             console.log(response);
             const tasks = response.data.tarefas;
@@ -74,13 +74,13 @@ $(document).ready(async function () {
     await buscarTarefas();
 
 
-    $(document).off('submit', '#btn-save-status'); // linha para ele nao pegar todos os que deram errado e subir para o banco apos da prox tentativa dar certo
-    $(document).on('submit', '#btn-save-status', async function (event) {
-        const tasks = $(this).data(id);
-        const newStatus = $(`.status-dropdown[data-id='${tasksId}']`).val();
+    $(document).off('click', '.btn-save-status'); // linha para ele nao pegar todos os que deram errado e subir para o banco apos da prox tentativa dar certo
+    $(document).on('click', '.btn-save-status', async function (event) {
+        const taskId = $(this).data('id');
+        const newStatus = $(`.status-dropdown[data-id='${taskId}']`).val();
 
         try {
-            await axios.put(`${localStorage.getItem('ipApi')}atualizarStatus/ ${tasksId}`,{status:newStatus});
+            await axios.put(`${localStorage.getItem('ipApi')}atualizarStatus/ ${taskId}`,{status:newStatus});
             await buscarTarefas();
 
         } catch (error) {

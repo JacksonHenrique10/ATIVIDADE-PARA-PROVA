@@ -61,6 +61,38 @@ class Tarefa {
 
     }
 
+    static async atualizarStatus(id, status) {
+        try {
+            const conn = await connection();
+            const pSql = `UPDATE TAREFA SET status=? WHERE id_tarefa=?`;
+            const pValues = [status, id];
+            const [result] = await conn.query(pSql, pValues);
+
+            // console.log(result)
+            return result;
+
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
+    static async deletarTarefa(id) {
+        try {
+            const conn = await connection();
+            const pSql = `DELETE FROM TAREFA WHERE id_tarefa=?`;
+            const pValues = [id];
+            const [result] = await conn.query(pSql, pValues);
+
+            // console.log(result)
+            return result;
+
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
 
 }
 

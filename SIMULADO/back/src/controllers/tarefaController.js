@@ -38,9 +38,9 @@ export const TarefaController = {
 
     listarTarefas: async (req, res) => {
         try {
-            console.log("oiuiuiyiyiyiyi")
+            // console.log("oiuiuiyiyiyiyi")
             const tarefas = await Tarefa.listarTarefas();
-            console.log("we",tarefas)
+            console.log("we", tarefas)
             res.json({ tarefas });
 
 
@@ -52,12 +52,13 @@ export const TarefaController = {
 
     atualizarStatus: async (req, res) => {
         try {
-            const {id}=req.params;
-            const {status}=req.body;
+            const { id } = req.params;
+            const { status } = req.body;
             const newStatus = status.toUpperCase();
-            
-            const atualizarStatus = await Tarefa.atualizarStatus(id,status);
-          
+            const atualizarStatus = await Tarefa.atualizarStatus(id, status);
+
+            // console.log();
+
             res.json({ atualizarStatus });
 
 
@@ -65,8 +66,25 @@ export const TarefaController = {
         } catch (error) {
             res.json({ message: error })
         }
-    }
+    },
 
+
+    deletarTarefa: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const  deletar = await Tarefa.deletarTarefa(id);
+            
+
+            // console.log();
+
+            res.json({ deletar });
+
+
+
+        } catch (error) {
+            res.json({ message: error })
+        }
+    }
 
 
 }

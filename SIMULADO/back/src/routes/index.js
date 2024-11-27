@@ -10,6 +10,7 @@ router.get('/listarUsuarios', UsuarioController.listarUsuarios); //funçaõ list
 router.post('/novaTarefa', TarefaController.novaTarefa); //função nova tarefa
 router.get('/listarTarefas',TarefaController.listarTarefas);
 router.put('/atualizarStatus/:id',TarefaController.atualizarStatus);
+router.delete('/deletarTarefa/:id', TarefaController.deletarTarefa);
 
 
 export default router;
